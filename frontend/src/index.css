@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography - Minimal IDE theme */
+body {
+  background-color: #000000;
+  color: #a8a8a8;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar - Minimal dark styling */
+::-webkit-scrollbar {
+  @apply w-2.5 h-2.5;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2a2a2a;
+  border-radius: 0.125rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #1a1a1a;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a #000000;
+}
+
+/* Code blocks */
+pre {
+  background-color: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  color: #a8a8a8;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.875rem;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(74, 158, 255, 0.3);
+  color: #a8a8a8;
+}
+
+/* Focus ring - Blue accent */
+:focus-visible {
+  outline: none;
+  ring: 2px #4a9eff;
+  box-shadow: 0 0 0 2px #000000, 0 0 0 4px #4a9eff;
+}
+
+/* Smooth transitions for IDE interactions */
+button,
+input,
+select,
+textarea {
+  @apply transition-all duration-150;
+}

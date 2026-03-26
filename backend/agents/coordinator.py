@@ -83,9 +83,7 @@ class CoordinatorAgent(BaseAgent):
 
         try:
             # Emit agent started
-            await event_callback(
-                AgentStartedEvent(agent_id=self.agent_id, data={})
-            )
+            await event_callback(AgentStartedEvent(agent_id=self.agent_id, data={}))
 
             # Build and compile the graph with event_callback captured in closure
             graph = self._build_graph(event_callback)
@@ -210,9 +208,7 @@ class CoordinatorAgent(BaseAgent):
 
         async def consolidate_findings_node(state: CoordinatorState) -> dict:
             """Consolidate findings from all specialists."""
-            consolidated, conflicts = self._consolidate_findings(
-                state["specialist_results"]
-            )
+            consolidated, conflicts = self._consolidate_findings(state["specialist_results"])
 
             by_severity = self._count_by_severity(consolidated)
             await event_callback(
@@ -295,8 +291,7 @@ class CoordinatorAgent(BaseAgent):
             functions = sum(1 for node in ast.walk(tree) if isinstance(node, ast.FunctionDef))
             classes = sum(1 for node in ast.walk(tree) if isinstance(node, ast.ClassDef))
             imports = sum(
-                1 for node in ast.walk(tree)
-                if isinstance(node, (ast.Import, ast.ImportFrom))
+                1 for node in ast.walk(tree) if isinstance(node, (ast.Import, ast.ImportFrom))
             )
             return {
                 "lines": lines,
@@ -351,7 +346,9 @@ class CoordinatorAgent(BaseAgent):
 
                 if key in findings_by_key:
                     existing = findings_by_key[key]
-                    if self._severity_rank(finding.severity) > self._severity_rank(existing.severity):
+                    if self._severity_rank(finding.severity) > self._severity_rank(
+                        existing.severity
+                    ):
                         findings_by_key[key] = finding
                         conflicts_resolved += 1
                     else:

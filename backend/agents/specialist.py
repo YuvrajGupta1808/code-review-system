@@ -30,7 +30,6 @@ from backend.models import (
     ThinkingEvent,
 )
 
-
 # Tool definition for specialists (same for all)
 REPORT_FINDING_TOOL = {
     "type": "function",
@@ -232,6 +231,4 @@ class SpecialistAgent(BaseAgent):
             )
             raise
 
-        return AgentResult(
-            agent_id=self.agent_id, findings=findings, errors=errors, metadata={}
-        )
+        return AgentResult(agent_id=self.agent_id, findings=findings, errors=errors, metadata={})
